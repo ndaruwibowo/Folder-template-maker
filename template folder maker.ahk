@@ -10,6 +10,8 @@ EditFDNames := MainGui.AddEdit("vFolderNames w211", "Flower,Seedling,Tree")
 MainGui.AddButton("x+10", "Save").OnEvent("Click", SaveClick)
 MainGui.AddButton("x+10", "Load").OnEvent("Click", LoadClick)
 ; Call Choose_Click when clicked.
+MainGui.AddButton("xs", "Create folder(s)").OnEvent("Click", CreateFolderClick)
+MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
 
 ChooseClick(*)
@@ -32,14 +34,25 @@ LoadClick(*)
   LoadProfileDest := FileSelect(3, , "Open a file", "Profile files (*.profile)")
   if not LoadProfileDest = ""
     EditFDNames.Value := FileRead(LoadProfileDest)
-
   Else
     Exit
 }
 
-;FDNames := "red,green,blue"
-;Loop parse, FDNames, ","
-;{
-;  MainSelectedFolder .= SelectedFolder . A_LoopField
-;  DirCreate SelectedFolder
-;}
+
+CreateFolderClick(*)
+{
+  Result := MsgBox("Would you like to create the folder(s)? (press Yes or No)",, "YesNo")
+if Result = "Yes"
+  Loop Parse, EditFDNames.Value, ","
+    {
+      CreateFDDest := EditFDDest.Value . A_LoopField
+      DirCreate CreateFDDest
+    }
+else
+    Exit
+}
+
+MainGuiClose(*)
+{
+ExitApp
+}

@@ -1,7 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 #Warn
-MainGui := Gui()
+MainGui := Gui(,"Folder Template Maker v1.0")
 MainGui.Add("Text",, "Choose the destination directory:")
 EditFDDest := MainGui.AddEdit("vFolderDisp w250 ReadOnly", "")
 MainGui.AddButton("x+10", "Choose").OnEvent("Click", ChooseClick)
@@ -10,7 +10,7 @@ EditFDNames := MainGui.AddEdit("vFolderNames w211", "Flower,Seedling,Tree")
 MainGui.AddButton("x+10", "Save").OnEvent("Click", SaveClick)
 MainGui.AddButton("x+10", "Load").OnEvent("Click", LoadClick)
 ; Call Choose_Click when clicked.
-MainGui.AddButton("xs+80", "Create folder(s)").OnEvent("Click", CreateFolderClick)
+MainGui.AddButton("Default xs+80", "Create folder(s)").OnEvent("Click", CreateFolderClick)
 MainGui.AddButton("x+10", "Cancel").OnEvent("Click", MainGuiClose)
 MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
@@ -52,7 +52,7 @@ LoadClick(*)
 CreateFolderClick(*)
 {
   If (EditFDDest.Value = "") {
-    MsgBox("Please choose a destination first.",, "OK")
+    MsgBox("Please choose a destination first.", "Warning", "OK Icon!")
     Return
   }
   Else If not (EditFDDest.Value = "") {
@@ -63,6 +63,7 @@ CreateFolderClick(*)
             CreateFDDest := EditFDDest.Value "\" A_LoopField
             DirCreate CreateFDDest
           }
+        MsgBox("Folder(s) created successfully.", "Info", "OK Iconi")
   }
   Else {
     Exit

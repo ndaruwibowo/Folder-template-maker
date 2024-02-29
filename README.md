@@ -5,7 +5,7 @@
 Simple app to create folders at once with different names.
 
 ## Download
-You can download it [here]([url](https://github.com/ndaruwibowo/Folder-template-maker/releases/tag/Release)).
+You can download it [here](https://github.com/ndaruwibowo/Folder-template-maker/releases/tag/Release).
 
 # What is this?
 

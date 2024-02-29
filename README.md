@@ -1,12 +1,15 @@
 # Folder Template Maker
 
-# Short desc.
+## Short desc.
 
 Simple app to create folders at once with different names.
 
+## Download
+You can download it [here]([url](https://github.com/ndaruwibowo/Folder-template-maker/releases/tag/Release)).
+
 # What is this?
 
-As the name suggests, this application is to make a folder (or several folders) at once. The common use case is to make several work folders that many use to categorize their files, like sources, working, done, et cetera. So, rather than making each folder and renaming them one by one, this application will do it all at once for you. You just need to choose destination and type each folder name, separated by a comma, in the second field, then press Create folder(s).
+As the name suggests, this application is to make a folder (or several folders) at once. The common use case is to make several work folders that many use to categorize their files, like sources, working, done, et cetera. So, rather than making each folder and renaming them one by one, this application will do it all at once for you. You just need to choose a destination and type each folder name, separated by a comma, in the second field, then press Create folder(s).
 
 You can also save your folder names in templates to use them later. (You should rename the saved template first to avoid overwriting it.)
 

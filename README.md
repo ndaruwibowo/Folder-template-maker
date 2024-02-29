@@ -1,4 +1,4 @@
-# Template Folder Maker
+# Folder Template Maker
 
 # Short desc.
 

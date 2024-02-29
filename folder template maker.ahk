@@ -13,7 +13,7 @@ MainGui.AddButton("x+10", "Load").OnEvent("Click", LoadClick)
 MainGui.AddButton("Default xs+80", "Create folder(s)").OnEvent("Click", CreateFolderClick)
 MainGui.AddButton("x+10", "Cancel").OnEvent("Click", MainGuiClose)
 Fontlink := MainGui.Add("Text", "xs", "Created by M. Ndaru Wibow - GitHub Rep").OnEvent("Click", Lauchlink
-Fontlink.SetFont(S9,)
+Fontlink.SetFont(S9)
 MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
 

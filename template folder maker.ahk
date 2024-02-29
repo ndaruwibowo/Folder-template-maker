@@ -3,14 +3,15 @@
 #Warn
 MainGui := Gui()
 MainGui.Add("Text",, "Choose the destination directory:")
-EditFDDest := MainGui.AddEdit("vFolderDisp w250 ReadOnly", "...")
+EditFDDest := MainGui.AddEdit("vFolderDisp w250 ReadOnly", "")
 MainGui.AddButton("x+10", "Choose").OnEvent("Click", ChooseClick)
 MainGui.Add("Text", "xs", "Type your folder(s) name, separated by comma:")
 EditFDNames := MainGui.AddEdit("vFolderNames w211", "Flower,Seedling,Tree")
 MainGui.AddButton("x+10", "Save").OnEvent("Click", SaveClick)
 MainGui.AddButton("x+10", "Load").OnEvent("Click", LoadClick)
 ; Call Choose_Click when clicked.
-MainGui.AddButton("xs", "Create folder(s)").OnEvent("Click", CreateFolderClick)
+MainGui.AddButton("xs+80", "Create folder(s)").OnEvent("Click", CreateFolderClick)
+MainGui.AddButton("x+10", "Cancel").OnEvent("Click", MainGuiClose)
 MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
 
@@ -22,11 +23,21 @@ ChooseClick(*)
 
 SaveClick(*)
 {
-  SaveProfileDest := DirSelect(, 3)
+  SaveProfileDest := StrReplace(FileSelect("S24", A_MyDocuments, "Save template profile", "Profile files (*.profile)"), ".profile", "")
   if not SaveProfileDest = ""
-    FileAppend EditFDNames.Value, SaveProfileDest "\Template1.profile"
-  else
-    Exit
+    try {  
+      FileObj := FileOpen(SaveProfileDest ".profile", "w")
+    }
+    Catch {
+      Exit
+    }
+      try {
+        FileObj.Write(EditFDNames.Value)
+        FileObj.Close()
+      }
+      Catch {
+        Exit
+      }
 }
 
 LoadClick(*)
@@ -38,18 +49,24 @@ LoadClick(*)
     Exit
 }
 
-
 CreateFolderClick(*)
 {
-  Result := MsgBox("Would you like to create the folder(s)? (press Yes or No)",, "YesNo")
-if Result = "Yes"
-  Loop Parse, EditFDNames.Value, ","
-    {
-      CreateFDDest := EditFDDest.Value . A_LoopField
-      DirCreate CreateFDDest
-    }
-else
+  If (EditFDDest.Value = "") {
+    MsgBox("Please choose a destination first.",, "OK")
+    Return
+  }
+  Else If not (EditFDDest.Value = "") {
+    Result := MsgBox("Would you like to create the folder(s)? (press Yes or No)",, "YesNo")
+      if Result = "Yes"
+        Loop Parse, EditFDNames.Value, ",", A_Space
+          {
+            CreateFDDest := EditFDDest.Value "\" A_LoopField
+            DirCreate CreateFDDest
+          }
+  }
+  Else {
     Exit
+  }
 }
 
 MainGuiClose(*)

@@ -6,7 +6,7 @@ Simple app to create folders at once with different names.
 
 # What is this?
 
-As the name suggest, this application is to make a folder (or several folders) at once. The common use case is to make several work folders that many use to categorize their files, like sources, working, done, et cetera. So, rather than making each folder and rename them one by one, this application will do it at once for you. You just need to choose destination and type each folder name, separated by comma, in the second field, then press *Create folder(s)*.
+As the name suggests, this application is to make a folder (or several folders) at once. The common use case is to make several work folders that many use to categorize their files, like sources, working, done, et cetera. So, rather than making each folder and renaming them one by one, this application will do it all at once for you. You just need to choose destination and type each folder name, separated by a comma, in the second field, then press Create folder(s).
 
 You can also save your folder names in templates to use them later. (You should rename the saved template first to avoid overwriting it.)
 
@@ -20,4 +20,4 @@ Yes, it is. It is open source and you can freely see its script. I use AutoHotKe
 
 # Can I contribute?
 
-Yes, in the future, more features might be coming and finding bugs (and fixing them) will be greatly appreciated (I'm still grasping at AHK V2.
+Yes, in the future, more features might be coming, and finding bugs (and fixing them) will be greatly appreciated (I'm still grasping at AHK V2).

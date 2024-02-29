@@ -14,7 +14,6 @@ MainGui.AddButton("Default xs+80 y+10", "Create folder(s)").OnEvent("Click", Cre
 MainGui.AddButton("x+10", "Cancel").OnEvent("Click", MainGuiClose)
 MainGui.SetFont("S6")
 MainGui.AddLink("xs+80 y+10", 'Created by M. Ndaru Wibow - <a href="https://github.com/ndaruwibowo">GitHub Rep</a>')
-;MainGui.Add("Text", "xs+70", "Created by M. Ndaru Wibow - GitHub Rep").OnEvent("Click", Launchlink)
 MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
 
@@ -71,11 +70,6 @@ CreateFolderClick(*)
   Else {
     Exit
   }
-}
-
-Launchlink(*)
-{
-Run("https://github.com/ndaruwibowo")
 }
 
 MainGuiClose(*)

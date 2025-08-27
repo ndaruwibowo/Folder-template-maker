@@ -1,19 +1,26 @@
-﻿#Requires AutoHotkey v2.0
+﻿/*
+folder template maker
+Creator: ndaruwibowo / frostytropis
+Github: https://github.com/ndaruwibowo/folder-template-maker
+License: MIT
+Description:
+A simple GUI tool for creating folder templates.
+*/
+#Requires AutoHotkey v2.0
 #SingleInstance Force
 #Warn
 MainGui := Gui(,"Folder Template Maker v1.0.1")
 MainGui.Add("Text",, "Choose the destination directory:")
 EditFDDest := MainGui.AddEdit("vFolderDisp w250 ReadOnly", "")
 MainGui.AddButton("x+10", "Choose").OnEvent("Click", ChooseClick)
-MainGui.Add("Text", "xs y+10", "Type your folder(s) name, separated by comma:")
-EditFDNames := MainGui.AddEdit("vFolderNames w211", "Flower,Seedling,Tree")
+MainGui.Add("Text", "xs y+10", "Type your folder(s) name, separated by pipe:")
+EditFDNames := MainGui.AddEdit("vFolderNames w211", "Flower|Seedling|Tree")
 MainGui.AddButton("x+10", "Save").OnEvent("Click", SaveClick)
 MainGui.AddButton("x+10", "Load").OnEvent("Click", LoadClick)
-; Call Choose_Click when clicked.
 MainGui.AddButton("Default xs+80 y+10", "Create folder(s)").OnEvent("Click", CreateFolderClick)
 MainGui.AddButton("x+10", "Cancel").OnEvent("Click", MainGuiClose)
 MainGui.SetFont("S6")
-MainGui.AddLink("xs+80 y+10", 'Created by M. Ndaru Wibow - <a href="https://github.com/ndaruwibowo">GitHub Rep</a>')
+MainGui.AddLink("xs+80 y+10", 'Created by M. Ndaru Wibowo - <a href="https://github.com/ndaruwibowo/Folder-template-maker">GitHub Rep</a>')
 MainGui.OnEvent("Close", MainGuiClose)
 MainGui.Show()
 
@@ -60,7 +67,7 @@ CreateFolderClick(*)
   Else If not (EditFDDest.Value = "") {
     Result := MsgBox("Would you like to create the folder(s)? (press Yes or No)",, "YesNo")
       if Result = "Yes"
-        Loop Parse, EditFDNames.Value, ",", A_Space
+        Loop Parse, EditFDNames.Value, "|", A_Space
           {
             CreateFDDest := EditFDDest.Value "\" A_LoopField
             DirCreate CreateFDDest

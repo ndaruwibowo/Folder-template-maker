@@ -24,3 +24,7 @@ Yes, it is. It is open source and you can freely see its script. I use AutoHotKe
 # Can I contribute?
 
 Yes, in the future, more features might be coming, and finding bugs (and fixing them) will be greatly appreciated (I'm still grasping at AHK V2).
+
+# Changelogs
+v1.0.1 - Create several folders at once; Save folder names into profile files to use at a latter date.
+v1.0.2 - Changed separator for creating several folders to pipe (|) to be in line with Windows folder name restriction.

@@ -9,7 +9,7 @@ A simple GUI tool for creating folder templates.
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 #Warn
-MainGui := Gui(,"Folder Template Maker v1.0.1")
+MainGui := Gui(,"Folder Template Maker")
 MainGui.Add("Text",, "Choose the destination directory:")
 EditFDDest := MainGui.AddEdit("vFolderDisp w250 ReadOnly", "")
 MainGui.AddButton("x+10", "Choose").OnEvent("Click", ChooseClick)
